@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
+		<style>
+			ul{
+				list-style: none;
+				padding: 0;
+			}
+			body{
+				background-color: rgb(248,248,248);
+			}
+			.wrap{
+				width: 100%vw;
+				height: 800px;
+/* 				background-color: aqua; */
+			}
+			.head{
+				display: flex;
+				margin-left: 30px;
+				border: 1px solid black;
+			}
+			.logo_big{
+				width: 150px;
+				height: 40px;
+				margin-right: 15px;
+			}
+			.container-fluid1{
+				flex: 3;
+			}
+			.container-fluid{
+				flex: 7;
+			}
+			.head_nav>li>a{
+				padding: 15px 30px;
+			}
+			.con{
+				display: flex;
+			}
+			.left{
+				flex: 2;
+			}
+			.left_li{
+				height: 700px;
+				width: 180px;
+				border-radius: 0;
+			}
+			.list-group-item{
+				padding:10px 20px 10px 30px;
+				background-color: rgb(45,48,55);
+				color: rgb(175,190,192);
+				border: none;
+				height: 50px;
+			}
+			.list-group-item:hover{
+				background-color: rgb(36,38,44);
+			}
+			
+			.na_li {
+			    overflow: hidden;
+			    position: relative;
+			    transform: translateX(-150px);
+			    height: 500px;
+			    width: 350px;
+			    transition: all 800ms cubic-bezier(.8, 0, .33, 1);
+			    border-radius: 0% 0% 100% 50%;
+			}
+			
+			.na_li.nav-open {
+				width: 300px;
+/* 				height: 500px; */
+			    transform: translateX(0px);
+			    border-radius: 0% 0% 0% 0%;
+				background: rgba(255, 255, 255, 0.6);
+			}
+			
+			.na_li .menu-btn {
+			    position: absolute;
+			    top: 10%;
+			    right: 5%;
+			    padding: 0;
+			    width: 30px;
+			    cursor: pointer;
+			    z-index: 2;
+			}
+			
+			.na_li .menu-btn .line {
+			    padding: 0;
+			    width: 30px;
+			    background: rgba(0,0,0,0.6);;
+			    height: 2px;
+			    margin: 5px 0;
+			    transition: all 700ms cubic-bezier(.9, 0, .33, 1);
+			}
+			
+			.na_li .menu-btn .line.line--1 {
+			    width: 30px;
+			    transform: rotate(0) translateY(0);
+			}
+			
+			.na_li .menu-btn .line.line--1.line-cross {
+			    width: 30px;
+			    transform: rotate(45deg) translateY(10px);
+				background: rgba(0,0,0,0.6);
+			}
+			
+			.na_li .menu-btn .line.line--2 {
+			    width: 28px;
+			    transform: translateX(0);
+			}
+			
+			.na_li .menu-btn .line.line--2.line-fade-out {
+			    width: 28px;
+			    transform: translate(30px);
+			    opacity: 0;
+			}
+			
+			.na_li .menu-btn .line.line--3 {
+			    width: 20px;
+			    transform: rotate(0) translateY(0);
+			}
+			
+			.na_li .menu-btn .line.line--3.line-cross {
+			    width: 30px;
+			    transform: rotate(-45deg) translateY(-10px);
+				background: rgba(0,0,0,0.6);
+			}
+			
+			.na_li .nav-links {
+			    position: absolute;
+			    left: 0;
+			    top: 0;
+			    width: 100%;
+			    height: 100%;
+			    display: flex;
+			    flex-direction: column;
+			    align-items: center;
+			    justify-content: center;
+			    transform: translateX(-100px);
+			    opacity: 0;
+			    transition: all 900ms cubic-bezier(.9, 0, .33, 1);
+			}
+			
+			.na_li .nav-links.fade-in {
+				width: 250px;
+			    opacity: 1;
+			    transform: translateX(0px);
+			}
+			
+			.na_li .nav-links .link {
+			    margin: 20px 0;
+			    text-decoration: none;
+			    font-family: sans-serif;
+			    color: rgba(0,0,0,0.9);
+			    font-weight: 700;
+			    text-transform: uppercase;
+			    font-size: 1.2rem;
+			    transition: all 300ms cubic-bezier(.9, 0, .33, 1);
+			}
+			
+			.na_li .nav-links .link:hover {
+			    color: rgba(0, 0, 0, .5);
+			}
+			
+			
+/* 			.inform{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				color: rgba(255, 255, 255, 0.8);
+				font-size: 2rem;
+				font-family: sans-serif;
+				text-transform: uppercase;
+				letter-spacing: 5px;
+				text-shadow: 0 0 20px rgba(0,0,0,0.6);
+			} */
+			
+			.nav-links a{
+				margin: 0 20px;
+				color: #fff;
+				font-size: 2rem;
+				transition: all 400ms ease;
+			}
+			
+			.nav-links a:hover{
+				color: #222;
+			}
+			.right{
+				flex: 8;
+				height: 500px;
+				width: 300px;
+/* 				background-color: #D43F3A; */
+			}
+			.right_top{
+				width: 100%;
+				height: 15%;
+/* 				background-color: aqua; */
+				display: flex;
+			}
+			.con_name{
+				flex: 3;
+/* 				background-color: #EC971F; */
+				line-height: 70px;
+				font-size: 20px;
+				margin-left: 30px;
+			}
+			.search{
+				margin-top: 8px;
+				flex: 6;
+/* 				background-color: chartreuse; */
+			}
+			.more{
+				flex: 3;
+/* 				background-color: darkgreen; */
+			}
+			.right_con{
+				height: 85%;
+				width: 100%;
+				background-color: rgb(233,235,236);
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="head">
+				<nav class="navbar navbar-default1" style="width: 20%;margin: 0;height: 50px;">
+					<div class="container-fluid1">
+						<div class="navbar-header" style="text-align: center;">
+							<a class="navbar-brand" href="#" style="padding: 0;">
+								<img class="logo_big" src="./img/logo.png">
+							</a>
+						</div>
+					</div>
+				</nav>
+				<nav class="navbar navbar-default" style="width: 80%; margin: 0;">
+					<div class="container-fluid">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+							 aria-expanded="false">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav head_nav">
+								<li><a href="#" class="glyphicon glyphicon-briefcase"> 办公<span class="sr-only">(current)</span></a></li>
+								<li><a href="#" class="glyphicon glyphicon-user"> 客户管理</a></li>
+								<li><a href="#" class="glyphicon glyphicon-equalizer"> 商业智能</a></li>
+								<li><a href="#" class="glyphicon glyphicon-th-large"> 项目管理</a></li>
+							</ul>
+						</div><!-- /.navbar-collapse -->
+					</div><!-- /.container-fluid -->
+				</nav>
+			</div>
+			<div class="con">
+				<div class="left">
+					<nav class="na_li">
+						<div class="menu-btn">
+							<div class="line line--1"></div>
+							<div class="line line--2"></div>
+							<div class="line line--3"></div>
+						</div>
+
+						<div class="nav-links">
+							<div class="left_li">
+								<ul class="list-group">
+									<li class="list-group-item glyphicon glyphicon-gift" style="border-radius: 0;"> 仪表盘</li>
+									<li class="list-group-item glyphicon glyphicon-phone-alt"> 待办事项</li>
+									<li class="list-group-item glyphicon glyphicon-paperclip"> 线索</li>
+									<li class="list-group-item glyphicon glyphicon-user"> 客户</li>
+									<li class="list-group-item glyphicon glyphicon-user"> 联系人</li>
+									<li class="list-group-item glyphicon glyphicon-tags"> 公海</li>
+									<li class="list-group-item glyphicon glyphicon-plane"> 商机</li>
+									<li class="list-group-item glyphicon glyphicon-folder-open"> 合同</li>
+									<li class="list-group-item glyphicon glyphicon-credit-card"> 回款</li>
+									<li class="list-group-item glyphicon glyphicon-blackboard"> 产品</li>
+									<li class="list-group-item glyphicon glyphicon-signal" style="border-radius: 0;"> 推广</li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+				</div>
+				<div class="right">
+					<div class="right_top">
+						<div class="con_name">
+							<span>客户管理</span>
+						</div>
+						<div class="search">
+							<form class="navbar-form navbar-left" role="search">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="请输入客户名称/手机/电话">
+								</div>
+								<button type="submit" class="btn btn-default"><img src="./img/搜搜.png"/ style="height: 20px;width: 20px;"></button>
+							</form>
+						</div>
+						<div class="more" style="margin-top: 8px;">
+							<button type="button" class="btn btn-default navbar-btn">新建客户</button>
+							<div class="dropdown" style="display: inline-block;">
+								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+								 aria-haspopup="true" aria-expanded="true">
+									更多
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+									<li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Separated link</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="right_con">
+						<table class="table table-hover table-striped">
+							<tr>
+								  <td >客户名称</td>
+								  <td >客户行业</td>
+								  <td >负责人</td>
+								  <td >备注</td>
+								  <td >电话</td>
+								  <td >创建时间</td>
+								  <td >创建人</td>
+								  <td >负责人</td>
+								  <td >负责人</td>
+								  <td >负责人</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</body>
+	<script src="./js/jquery-3.4.1.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script>
+		var menuBtn = document.querySelector('.menu-btn');
+		var nav = document.querySelector('.na_li');
+		var lineOne = document.querySelector('.na_li .menu-btn .line--1');
+		var lineTwo = document.querySelector('.na_li .menu-btn .line--2');
+		var lineThree = document.querySelector('.na_li .menu-btn .line--3');
+		var link = document.querySelector('.na_li .nav-links');
+		menuBtn.addEventListener('click', () => {
+			nav.classList.toggle('nav-open');
+			lineOne.classList.toggle('line-cross');
+			lineTwo.classList.toggle('line-fade-out');
+			lineThree.classList.toggle('line-cross');
+			link.classList.toggle('fade-in');
+		})
+		$(".head_nav>li").click(function() {
+			if ($(".head_nav>li").hasClass("active")) {
+				$(".head_nav>li").removeClass("active")
+			}
+			$(this).addClass("active")
+		})
+	</script>
+</html>
